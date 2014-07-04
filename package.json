@@ -4,7 +4,6 @@
   "description": "Personal website with a list of jobs I made and a blog.",
   "main": "web.js",
   "scripts": {
-    "test": "test",
     "start": "node web"
   },
   "repository": {

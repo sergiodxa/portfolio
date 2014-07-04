@@ -1,4 +1,3 @@
-portfolio
-=========
+# Portfolio personal
 
-Personal web site, with a list of jobs and a blog.
+Personal website with a list of jobs I made and a blog.

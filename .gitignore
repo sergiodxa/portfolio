@@ -25,4 +25,4 @@ build/Release
 node_modules
 
 # front
-# front/vendor
+front/vendor
