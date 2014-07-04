@@ -1,0 +1,11 @@
+nav(role="navigation").navbar.navbar-default.navbar-static-top
+  .navbar-header
+    a(href="./").navbar-brand Sergio Xalambrí
+  ul.nav.navbar-nav
+    each item in nav.items
+      if nav.active == item.id
+        li.active
+          a(href="#{item.href}", title="#{item.title}") #{item.content}
+      else
+        li
+          a(href="#{item.href}", title="#{item.title}") #{item.content}

@@ -1,0 +1,17 @@
+doctype html
+html(lang="es")
+  head
+    title #{title}
+    link(rel="stylesheet", href="./vendor/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href="./vendor/bootstrap/dist/css/bootstrap-theme.min.css")
+  body
+
+    include ../includes/navbar
+
+    block content
+
+    if env === 'prod'
+      script(src="./dist/main.min.js")
+    else
+      script(src="./vendor/jquery/dist/jquery.min.js")
+      script(src="./vendor/bootstrap/dist/js/bootstrap.min.js")
