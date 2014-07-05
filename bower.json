@@ -1,11 +1,11 @@
 {
   "name": "Portfolio",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/sergiodxa/portfolio",
   "authors": [
     "Sergio Daniel Xalambrí <sergio@xalambri.com.ar>"
   ],
-  "description": "Personal website with a list of jobs I made and a blog.",
+  "description": "My personal portfolio.",
   "main": "web.js",
   "keywords": [
     "portfolio",
@@ -20,10 +20,5 @@
     "test",
     "tests",
     "front/vendor"
-  ],
-  "dependencies": {
-    "angular": "~1.2.19",
-    "jquery": "~2.1.1",
-    "bootstrap": "~3.2.0"
-  }
+  ]
 }

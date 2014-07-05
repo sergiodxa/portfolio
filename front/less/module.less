@@ -1,0 +1,163 @@
+/*
+  Los módulos son pequeñas piezas del sitio que puedes reutilizar. En este archivo puedes cargar (import) todos los módulos que haces y ponerlos en archivo separado en una carpeta modules.
+*/
+
+// Navigation bar
+.navbar {
+  background: #222;
+  color: #fdfdfd;
+  left: 0;
+  padding: .75em;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  @media (max-width: 488px) { position: static; }
+  @media (max-width: 347px) { display: none; }
+}
+.navbar-list {
+  font-size: 0;
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+}
+.navbar-list-item {
+  border-bottom: 2px solid #222;
+  display: inline-block;
+  font-size: 1.125rem;
+  &:hover,
+  &.active { border-bottom: 2px solid #1E90FF; }
+  a {
+    display: block;
+    padding: .5em 1em;
+  }
+}
+
+// Site content
+.content {
+  .border-radius(10px);
+  bottom: 0;
+  left: 0;
+  padding-left: 25px;
+  padding-right: 25px;
+  position: absolute;
+  right: 225px;
+  top: 67px;
+  z-index: 1;
+  @media (max-width: 720px) { right: 175px; }
+  @media (max-width: 600px) {
+    right: 0;
+    top: 183px;
+  }
+  @media (max-width: 488px) { position: static; }
+}
+.name {
+  margin: 1rem 0 0;
+  font-size: 3rem;
+  @media (max-width: 540px) { font-size: 2rem; }
+}
+.description {
+  text-align: justify;
+  p { margin: 1em 0; }
+}
+.skill-list {
+  font-size: 0;
+  margin: 0;
+  margin-bottom: 1rem;
+  padding-left: 0;
+}
+.skill-list-item {
+  border-bottom: 1px solid #101010;
+  display: inline-block;
+  font-size: 1rem;
+  padding-bottom: .25em;
+  padding-top: .25em;
+  width: 33.33%;
+  @media (max-width: 600px) { width: 50%; }
+  @media (max-width: 400px) { width: 100%; }
+}
+
+// Sidebar
+.sidebar {
+  background: #222;
+  bottom: 0;
+  color: #fdfdfd;
+  position: fixed;
+  right: 0;
+  top: 67px;
+  width: 225px;
+  z-index: 2;
+  a { text-decoration: none; }
+  @media (max-width: 720px) { width: 175px; }
+  @media (max-width: 600px) {
+    height: 116px;
+    left: 0;
+    width: auto;
+  }
+  @media (max-width: 488px) {
+    height: auto;
+    position: static;
+  }
+}
+
+// Profile
+.profile-picture {
+  margin: 2em 2em 0;
+  text-align: center;
+  img {
+    .border-radius(50%);
+    .box-shadow(0 0 10px #fdfdfd);
+    max-width: 100%;
+  }
+  @media (max-width: 600px) { display: none; }
+}
+.profile-title {
+  display: block;
+  font-family: 'PT Sans Caption', sans-serif;
+  letter-spacing: 3px;
+  margin: 1em 1em .25em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+// Widgets
+.widget-title {
+  .border-box();
+  .center-block();
+  border-bottom: 1px solid #fdfdfd;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  width: calc(~"100% - 2em");
+}
+.widget-list {
+  list-style-type: none;
+  margin: 0 1em;
+  padding-left: .5em;
+  @media (max-width: 600px) and (min-width: 489px) { text-align: center; }
+}
+.widget-list-item {
+  font-size: 1.25rem;
+  text-align: left;
+  .icon,
+  .icon-medium {
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  a {
+    .transition(all .25s);
+    color: #DCDCDC;
+    display: block;
+    padding: .5em 0;
+    &:hover { padding-left: .5em; }
+  }
+  @media (max-width: 600px) {
+    display: inline-block;
+    font-size: 1rem;
+    width: 25%;
+    a {
+      &:hover { padding-left: 0; }
+    }
+  }
+  @media (max-width: 488px) { width: 50%; }
+}

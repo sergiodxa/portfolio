@@ -1,0 +1,19 @@
+aside.sidebar
+  figure.profile-picture
+    img(src="https://avatars2.githubusercontent.com/u/1312018?s=460", alt="Me")
+  span.profile-title Front End Developer
+  ul.widget-list
+    each network in networks
+      li.widget-list-item
+        if network.name === 'Contact me!' || network.name === 'Skype'
+          a(href="#{network.href}", title="#{network.title}")
+            span(class="icon icon-#{network.iconName}")
+            |  #{network.name}
+        else
+          a(href="#{network.href}", target="_blank", title="#{network.title}")
+            if network.name === 'Medium'
+              span(class="icon-medium")
+              |  #{network.name}
+            else
+              span(class="icon icon-#{network.iconName}")
+              |  #{network.name}

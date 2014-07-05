@@ -1,17 +1,14 @@
 doctype html
-html(lang="es")
+html(lang="en")
   head
     title #{title}
-    link(rel="stylesheet", href="./vendor/bootstrap/dist/css/bootstrap.min.css")
-    link(rel="stylesheet", href="./vendor/bootstrap/dist/css/bootstrap-theme.min.css")
+    meta(charset="utf-8")
+    link(rel="stylesheet", href="./css/main.min.css")
   body
 
-    include ../includes/navbar
+    .container
+      include ../includes/navbar
 
-    block content
+      block content
 
-    if env === 'prod'
-      script(src="./dist/main.min.js")
-    else
-      script(src="./vendor/jquery/dist/jquery.min.js")
-      script(src="./vendor/bootstrap/dist/js/bootstrap.min.js")
+      include ../includes/sidebar

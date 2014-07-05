@@ -1,11 +1,9 @@
-nav(role="navigation").navbar.navbar-default.navbar-static-top
-  .navbar-header
-    a(href="./").navbar-brand Sergio Xalambrí
-  ul.nav.navbar-nav
+nav(role="navigation").navbar.text-right
+  ul.navbar-list
     each item in nav.items
       if nav.active == item.id
-        li.active
+        li.navbar-list-item.active
           a(href="#{item.href}", title="#{item.title}") #{item.content}
       else
-        li
+        li.navbar-list-item
           a(href="#{item.href}", title="#{item.title}") #{item.content}
