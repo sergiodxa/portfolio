@@ -11,7 +11,7 @@ web.set('view engine', 'jade');
 var env = process.env.NODE_ENV || 'dev';
 
 // Route
-web.get('*', function (req, res) {
+web.get('/', function (req, res) {
   res.render('index', {
     env     : env,
     title   : 'Sergio Xalambrí | Front End Developer',
@@ -84,6 +84,10 @@ web.get('*', function (req, res) {
     ]
   });
 });
+
+web.get('*', function (req, res) {
+  res.redirect('/');
+})
 
 // Port listen
 var port = Number(process.env.PORT || 3000);
