@@ -4,7 +4,8 @@
   "description": "My personal portfolio.",
   "main": "web.js",
   "scripts": {
-    "start": "node web"
+    "start": "node web",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",

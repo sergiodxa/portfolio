@@ -1,6 +1,7 @@
 // Load express and execute
-var express = require('express');
-var web     = express();
+var express     = require('express');
+var web         = express();
+var experiments = require('./experiments');
 
 // Express configuration
 web.use(express.static(__dirname + '/front'));
@@ -10,35 +11,8 @@ web.set('view engine', 'jade');
 // Enviroment
 var env = process.env.NODE_ENV || 'dev';
 
-// Route
-web.get('/', function (req, res) {
-  res.render('index', {
-    env     : env,
-    title   : 'Sergio Xalambrí | Front End Developer',
-    nav     : {
-      active: 1,
-      items : [
-        {
-          id     : 1,
-          href   : './',
-          content: 'About',
-          title  : 'Do you want to know about me?'
-        },
-        {
-          id     : 2,
-          href   : '//medium.com/@sergiodxa',
-          content: 'Articles',
-          title  : 'Read what I have to say'
-        },
-        {
-          id     : 3,
-          href   : '//github.com/sergiodxa',
-          content: 'Repositories',
-          title  : 'See my repositories in Github'
-        }
-      ]
-    },
-    networks: [
+// Networks list
+var networks = [
       {
         title   : 'See my resume in LinkedIn',
         href    : '//ar.linkedin.com/in/sergiodxa',
@@ -82,6 +56,80 @@ web.get('/', function (req, res) {
         name    : 'Contact me!'
       }
     ]
+
+// Route
+web.get('/', function (req, res) {
+  res.render('index', {
+    env      : env,
+    title    : 'Sergio Xalambrí | Front End Developer',
+    nav      : {
+      active : 1,
+      items  : [
+        {
+          id     : 1,
+          href   : './',
+          content: 'About',
+          title  : 'Do you want to know about me?'
+        },
+        {
+          id     : 2,
+          href   : '//medium.com/@sergiodxa',
+          content: 'Articles',
+          title  : 'Read what I have to say'
+        },
+        {
+          id     : 3,
+          href   : '//github.com/sergiodxa',
+          content: 'Repositories',
+          title  : 'See my repositories in Github'
+        },
+        {
+          id     : 4,
+          href   : './lab',
+          content: 'Lab',
+          title  : 'Checkout my experiments with CSS3 & JS'
+        }
+      ]
+    },
+    networks: networks
+  });
+});
+
+web.get('/lab', function (req, res) {
+  res.render('lab', {
+    env        : env,
+    title      : 'Sergio Xalambrí | Front End Developer',
+    nav        : {
+      active: 4,
+      items : [
+        {
+          id     : 1,
+          href   : './',
+          content: 'About',
+          title  : 'Do you want to know about me?'
+        },
+        {
+          id     : 2,
+          href   : '//medium.com/@sergiodxa',
+          content: 'Articles',
+          title  : 'Read what I have to say'
+        },
+        {
+          id     : 3,
+          href   : '//github.com/sergiodxa',
+          content: 'Repositories',
+          title  : 'See my repositories in Github'
+        },
+        {
+          id     : 4,
+          href   : './lab',
+          content: 'Lab',
+          title  : 'Checkout my experiments with CSS3 & JS'
+        }
+      ],
+    },
+    networks   : networks,
+    experiments: experiments
   });
 });
 
