@@ -1,0 +1,17 @@
+extends layouts/base
+
+block content
+
+  section.content
+    h1.name CSS3 &amp; JS Laboratory
+    article
+      .description
+        p Welcome to my CSS3 &amp; JS laboratory, here you can check things I do with this technologies also as some libraries or projects I made for learn new frameworks, libraries and technologies.
+      each experiment in experiments
+        .experiment
+          h2.experiment-title #{experiment.title}
+          a(href="#{experiment.url}", title="Checkout this experiment").experiment-link Checkout this
+          ul.experiment-tags
+            each tag in experiment.tags
+              li.experiment-tag #{tag}
+          p.experiment-description #{experiment.content}

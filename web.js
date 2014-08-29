@@ -1,6 +1,7 @@
 // Load express and execute
-var express = require('express');
-var web     = express();
+var express     = require('express');
+var web         = express();
+var experiments = require('./experiments');
 
 // Express configuration
 web.use(express.static(__dirname + '/front'));
