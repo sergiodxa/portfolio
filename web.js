@@ -14,72 +14,72 @@ var env = process.env.NODE_ENV || 'dev';
 web.get('/', function (req, res) {
   res.render('index', {
     env     : env,
-    title   : 'Sergio Xalambrí | Front End Developer',
+    title   : 'Sergio Xalambrí | JavaScript Developer',
     nav     : {
       active: 1,
       items : [
         {
           id     : 1,
           href   : './',
-          content: 'About',
-          title  : 'Do you want to know about me?'
+          content: 'Sobre mí',
+          title  : 'Quieres saber algo más sobre mí?'
         },
         {
           id     : 2,
           href   : '//medium.com/@sergiodxa',
-          content: 'Articles',
-          title  : 'Read what I have to say'
+          content: 'Artículos',
+          title  : 'Lee lo que tengo para decir'
         },
         {
           id     : 3,
           href   : '//github.com/sergiodxa',
-          content: 'Repositories',
-          title  : 'See my repositories in Github'
+          content: 'Repositorios',
+          title  : 'Mira mis repositorios en Github'
         }
       ]
     },
     networks: [
       {
-        title   : 'See my resume in LinkedIn',
+        title   : 'Ver mi curriculum en LinkedIn',
         href    : '//ar.linkedin.com/in/sergiodxa',
         iconName: 'linkedin',
-        name    : 'Resume'
+        name    : 'Curriculum'
       },
       {
-        title   : 'Check all my code Github',
+        title   : 'Revisa todo mi código en Github',
         href    : '//github.com/sergiodxa?tab=repositories',
         iconName: 'github',
         name    : 'Github'
       },
       {
-        title   : 'Follow me in Twitter',
+        title   : 'Sigueme en Twitter',
         href    : '//twitter.com/sergiodxa',
         iconName: 'twitter',
         name    : 'Twitter'
       },
       {
-        title   : 'Add me to your circles',
+        title   : 'Agregame a tus círculos',
         href    : '//plus.google.com/+sergiodanielxalambri',
         iconName: 'googleplus',
         name    : 'Google Plus'
       },
       {
-        title   : 'Read my articles in Medium',
+        title   : 'Lee mis artículos en Medium',
         href    : '//medium.com/@sergiodxa',
         iconName: 'medium',
         name    : 'Medium'
       },
       {
-        title   : 'Contact me in Skype',
+        title   : 'Contactame en Skype',
         href    : 'skype:sergiodxa?add',
         iconName: 'skype',
         name    : 'Skype'
       },
       {
-        title   : 'Send me an email',
+        title   : 'Envíame un email',
         href    : 'mailto:sergio@xalambri.com.ar',
         iconName: 'mail',
-        name    : 'Contact me!'
+        name    : 'Contactame!'
       }
     ]
   });
