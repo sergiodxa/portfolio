@@ -1,18 +1,18 @@
 // Load express and execute
 var express     = require('express');
-var web         = express();
+var server      = express();
 var experiments = require('./experiments');
 
 // Express configuration
-web.use(express.static(__dirname + '/front'));
-web.set('views', __dirname + '/views');
-web.set('view engine', 'jade');
+server.use(express.static(__dirname + '/public'));
+server.set('views', __dirname + '/views');
+server.set('view engine', 'jade');
 
 // Enviroment
 var env = process.env.NODE_ENV || 'dev';
 
 // Route
-web.get('/', function (req, res) {
+server.get('/', function (req, res) {
   res.render('index', {
     env     : env,
     title   : 'Sergio Xalambrí | JavaScript Developer',
@@ -21,19 +21,25 @@ web.get('/', function (req, res) {
       items : [
         {
           id     : 1,
-          href   : './',
+          href   : '#about',
           content: 'Sobre mí',
           title  : 'Quieres saber algo más sobre mí?'
         },
         {
           id     : 2,
-          href   : '//medium.com/@sergiodxa',
+          href   : '#skills',
+          content: 'Conocimientos',
+          title  : 'Cosas que sé'
+        },
+        {
+          id     : 3,
+          href   : '#articles',
           content: 'Artículos',
           title  : 'Lee lo que tengo para decir'
         },
         {
-          id     : 3,
-          href   : '//github.com/sergiodxa',
+          id     : 4,
+          href   : '#repositories',
           content: 'Repositorios',
           title  : 'Mira mis repositorios en Github'
         }
@@ -86,12 +92,12 @@ web.get('/', function (req, res) {
   });
 });
 
-web.get('*', function (req, res) {
+server.get('*', function (req, res) {
   res.redirect('/');
-})
+});
 
 // Port listen
 var port = Number(process.env.PORT || 3000);
-web.listen(port, function() {
+server.listen(port, function() {
   console.log('Listening on ' + port);
 });

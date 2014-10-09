@@ -1,9 +1,6 @@
 nav(role="navigation").navbar.text-right
+  button(type="button").navbar-btn.fa.fa-bars
   ul.navbar-list
     each item in nav.items
-      if nav.active == item.id
-        li.navbar-list-item.active
-          a(href="#{item.href}", title="#{item.title}") #{item.content}
-      else
         li.navbar-list-item
           a(href="#{item.href}", title="#{item.title}") #{item.content}
