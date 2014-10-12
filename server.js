@@ -1,103 +1,65 @@
 // Load express and execute
-var express     = require('express');
-var server      = express();
-var experiments = require('./experiments');
+var express    = require('express');
+var bodyParser = require('body-parser');
+var validator  = require('validator');
+var Mailgun    = require('mailgun-js');
+var app        = express();
 
 // Express configuration
-server.use(express.static(__dirname + '/public'));
-server.set('views', __dirname + '/views');
-server.set('view engine', 'jade');
+app.use(express.static(__dirname + '/public'));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.json('application/json'));
 
 // Enviroment
 var env = process.env.NODE_ENV || 'dev';
 
 // Route
-server.get('/', function (req, res) {
-  res.render('index', {
-    env     : env,
-    title   : 'Sergio Xalambrí | JavaScript Developer',
-    nav     : {
-      active: 1,
-      items : [
-        {
-          id     : 1,
-          href   : '#about',
-          content: 'Sobre mí',
-          title  : 'Quieres saber algo más sobre mí?'
-        },
-        {
-          id     : 2,
-          href   : '#skills',
-          content: 'Conocimientos',
-          title  : 'Cosas que sé'
-        },
-        {
-          id     : 3,
-          href   : '#articles',
-          content: 'Artículos',
-          title  : 'Lee lo que tengo para decir'
-        },
-        {
-          id     : 4,
-          href   : '#repositories',
-          content: 'Repositorios',
-          title  : 'Mira mis repositorios en Github'
-        }
-      ]
-    },
-    networks: [
-      {
-        title   : 'Ver mi curriculum en LinkedIn',
-        href    : '//ar.linkedin.com/in/sergiodxa',
-        iconName: 'linkedin',
-        name    : 'Curriculum'
-      },
-      {
-        title   : 'Revisa todo mi código en Github',
-        href    : '//github.com/sergiodxa?tab=repositories',
-        iconName: 'github',
-        name    : 'Github'
-      },
-      {
-        title   : 'Sigueme en Twitter',
-        href    : '//twitter.com/sergiodxa',
-        iconName: 'twitter',
-        name    : 'Twitter'
-      },
-      {
-        title   : 'Agregame a tus círculos',
-        href    : '//plus.google.com/+sergiodanielxalambri',
-        iconName: 'googleplus',
-        name    : 'Google Plus'
-      },
-      {
-        title   : 'Lee mis artículos en Medium',
-        href    : '//medium.com/@sergiodxa',
-        iconName: 'medium',
-        name    : 'Medium'
-      },
-      {
-        title   : 'Contactame en Skype',
-        href    : 'skype:sergiodxa?add',
-        iconName: 'skype',
-        name    : 'Skype'
-      },
-      {
-        title   : 'Envíame un email',
-        href    : 'mailto:sergio@xalambri.com.ar',
-        iconName: 'mail',
-        name    : 'Contactame!'
-      }
-    ]
-  });
+app.get('/', function (req, res) {
+  res.sendfile(__dirname + '/public/index.html')
 });
 
-server.get('*', function (req, res) {
+app.post('/contacto', function (req, res) {
+  var mgConfig = {
+    apiKey: 'key-8v0qft5c0-044bx1xn30wmzorrt8ieo7',
+    domain: 'mailgun.xalambri.com.ar'
+  }
+  var mailgun  = Mailgun(mgConfig);
+  var body     = req.body;
+
+  if (!validator.isEmail(body.email)) {
+    res
+      .status(400)
+      .send('The email is not valid.')
+      .end();
+  } else {
+    mailgun.messages().send({
+      from: body.nombre + ' <' + body.email + '>',
+      to: 'sergio@xalambri.com.ar',
+      subject: 'Contacto: ' + body.asunto,
+      text: body.mensaje
+    }, function (error, body) {
+      if (error) {
+        res
+          .status(500)
+          .send('Problem sending the email.')
+          .end();
+      } else {
+        res
+          .status(200)
+          .send('Email sended.')
+          .end();
+      }
+    });
+  }
+});
+
+app.get('*', function (req, res) {
   res.redirect('/');
 });
 
 // Port listen
 var port = Number(process.env.PORT || 3000);
-server.listen(port, function() {
+app.listen(port, function() {
   console.log('Listening on ' + port);
 });

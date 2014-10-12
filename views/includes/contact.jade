@@ -1,0 +1,25 @@
+section#contact.bg-primary
+  article.container
+    h1.text-center Contactame
+    .row
+      .col-sm-6
+        p.text-justify Para ponerte en contacto conmigo por cualquier motivo (oferta de trabajo, preguntas sobre FrontEnd o JavaScript, o lo que quieras) puedes llenar el formulario y te responderé lo más rápido que pueda.
+        p También puedes enviarme un mail directamente a:
+        a(href="mailto:sergio@xalambri.com.ar", title="sergio@xalambri.com.ar").btn.btn-light sergio@xalambri.com.ar
+      .col-sm-6
+        form(role="form")#contacto.clearfix
+          div(role="alert").alert.alert-success.clearfix.hidden Mensaje recibido, en cuanto pueda respondo.
+          .form-group
+            label Nombre
+            input(type="text", name="nombre", placeholder="Nombre", required)#contacto-nombre.form-control
+          .form-group
+            label Email
+            input(type="email", name="email", placeholder="Email", required)#contacto-email.form-control
+          .form-group
+            label Asunto
+            input(type="text", name="asunto", placeholder="Asunto", required)#contacto-asunto.form-control
+          .form-group
+            label Mensaje
+            textarea(name="mensaje", placeholder="Mensaje", rows="5", required)#contacto-mensaje.form-control
+          input(type="submit", value="Enviar mensaje").btn.btn-light.btn-lg.pull-left
+          input(type="reset", value="Borrar mensaje").btn.btn-dark.btn-sm.pull-right

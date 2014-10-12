@@ -40,14 +40,23 @@
 
 */
 
-@import 'animate.less'; // Librería de animaciones
+// Normalize
+@import 'vendor/normalize.less';
 
-@import 'mixins.less'; // Mixins de LESS
+// Bootstrap library
+@import 'vendor/bootstrap/bootstrap.less';
 
-@import 'helpers.less';
+// Bootstrap theme
+@import 'vendor/stylish-portfolio.less';
 
-@import 'fonts.less';
+// Font Awesome
+@import 'vendor/fontawesome/font-awesome.less';
 
-@import 'base.less'; // Los estilos por defecto para cada etiqueta
+// Librería de animaciones
+@import 'vendor/animate.less';
 
-@import 'module.less'; // Los estilos de los componentes del sitio separado en módulos
+// Los estilos por defecto para cada etiqueta
+@import 'base.less';
+
+// Los estilos de los componentes del sitio separado en módulos
+@import 'module.less';
